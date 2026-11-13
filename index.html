@@ -20,5 +20,7 @@ function enableStates(){collaborationBoard.querySelectorAll('.state[disabled]').
 function refreshSummary(){collaborationSummary.textContent=collaborationBoard.querySelectorAll('.state').length?Array.from(collaborationBoard.querySelectorAll('.state')).filter(select=>select.value==='Hecha').length+' tareas hechas de 16':'Cargando tareas…'}
 new MutationObserver(()=>{enableStates();refreshSummary()}).observe(collaborationBoard,{childList:true,subtree:true});
 collaborationBoard.addEventListener('change',async event=>{const select=event.target;if(!select.matches('.state'))return;const task=select.closest('.task'),previous=task.dataset.state;select.disabled=true;const{error}=await collaborationClient.from('tablero_brota_tareas').update({estado:select.value}).eq('id',task.dataset.id);select.disabled=false;if(error){select.value=previous;collaborationNote.textContent='No se pudo guardar el cambio: '+error.message;return}task.dataset.state=select.value;refreshSummary();collaborationNote.textContent='Cambio guardado y sincronizado en tiempo real.'});
+collaborationBoard.addEventListener('mousedown',event=>{if(event.target.closest('.state'))event.stopPropagation()},true);
+collaborationBoard.addEventListener('click',event=>{if(event.target.closest('.state'))event.stopPropagation()},true);
 enableStates();
 </script></body></html>
