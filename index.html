@@ -33,4 +33,8 @@ D3:['Disenar dashboard, editar perfil, racha y configuracion de Broti con todos 
 D4:['Disenar bandeja de notificaciones y destinos asociados; preparar la prueba del recorrido completo.','lib/features/notificaciones/ (crear); lib/core/router/; pruebas de integracion.','Sin push en MVP. Validar contrato de deep links con cada capa y registrar estados de error/empty.']
 };
 document.querySelectorAll('.task').forEach(t=>{const id=t.dataset.id,s=specs[id];if(!s)return;const d=t.querySelector('.detail');d.insertAdjacentHTML('beforeend',`<h4>Diseno esperado</h4>${s[0]}<h4>Archivos o carpetas</h4><code>${s[1]}</code><h4>Arquitectura a respetar</h4>${s[2]}`)});
+</script><style>
+.task[data-state="En progreso"]{background:#fff7d6;border-left:5px solid #e4a900}.task[data-state="Hecha"]{background:#e7f7ec;border-left:5px solid #21a35c}.task[data-state="Bloqueada"]{background:#ffe8e6;border-left:5px solid #dc4b42}.task[data-state="Por hacer"]{background:#fff}.task[data-state="En progreso"] .state{border-color:#e4a900;background:#fff0ae}.task[data-state="Hecha"] .state{border-color:#21a35c;background:#d8f3e2}.task[data-state="Bloqueada"] .state{border-color:#dc4b42;background:#ffd9d5}
+</style><script>
+function paintTask(task){task.dataset.state=task.querySelector('select').value}document.querySelectorAll('.task').forEach(task=>{paintTask(task);task.querySelector('select').addEventListener('change',()=>paintTask(task))});
 </script></body></html>
