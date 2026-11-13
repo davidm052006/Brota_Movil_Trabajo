@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Tablero de avance del MVP móvil de Brota" />
+    <title>Brota móvil · Tablero MVP</title>
+    <style>
+      :root {
+        --ink: #183328;
+        --muted: #5f7469;
+        --cream: #f7f6ec;
+        --leaf: #217752;
+        --lime: #c7e86d;
+        --orange: #ffb35c;
+        --card: #ffffff;
+        --line: #d8e4d8;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--cream);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+      header {
+        padding: 56px 0 46px;
+        color: white;
+        background: radial-gradient(circle at 80% 0%, #559d67, transparent 35%), #183d2c;
+      }
+      .eyebrow { margin: 0 0 14px; color: var(--lime); font-size: .78rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+      h1 { max-width: 720px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.35rem, 6vw, 4.9rem); line-height: .96; letter-spacing: -.055em; }
+      .subtitle { max-width: 640px; margin: 22px 0 0; color: #dceadd; font-size: 1.1rem; line-height: 1.6; }
+      .status-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+      .pill { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 8px 13px; font-size: .86rem; }
+      main { padding: 48px 0 70px; }
+      .section-label { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+      h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.025em; }
+      .section-label p { margin: 0; color: var(--muted); font-size: .93rem; }
+      .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .card { min-height: 265px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: 0 8px 22px rgba(24, 51, 40, .05); }
+      .number { color: var(--leaf); font-size: .78rem; font-weight: 800; letter-spacing: .1em; }
+      .card h3 { margin: 13px 0 4px; font-size: 1.32rem; letter-spacing: -.035em; }
+      .owner { margin: 0 0 20px; color: var(--muted); font-size: .92rem; }
+      .card ul { margin: 0; padding-left: 18px; color: #365447; font-size: .9rem; line-height: 1.55; }
+      .task-board { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; margin-top: 48px; }
+      .tasks, .guide { border-radius: 18px; padding: 25px; }
+      .tasks { border: 1px solid var(--line); background: white; }
+      .guide { background: var(--lime); }
+      .tasks h2, .guide h2 { margin-bottom: 8px; }
+      .tasks > p, .guide > p { margin: 0 0 20px; color: var(--muted); line-height: 1.5; }
+      .task-list { display: grid; gap: 10px; }
+      .task { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px dashed #b9ccbc; border-radius: 11px; color: #6d8175; font-size: .94rem; }
+      .check { display: grid; width: 20px; height: 20px; flex: 0 0 20px; place-items: center; border: 1.5px solid #9ab5a0; border-radius: 5px; font-size: .7rem; }
+      .guide ol { margin: 15px 0 0; padding-left: 20px; line-height: 1.65; }
+      footer { padding: 22px 0 34px; color: var(--muted); font-size: .83rem; text-align: center; }
+      @media (max-width: 860px) { .team { grid-template-columns: repeat(2, 1fr); } .task-board { grid-template-columns: 1fr; } }
+      @media (max-width: 540px) { .wrap { width: min(100% - 28px, 1180px); } header { padding-top: 42px; } .team { grid-template-columns: 1fr; } .section-label { display: block; } .section-label p { margin-top: 8px; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <p class="eyebrow">Brota · desarrollo de producto</p>
+        <h1>MVP móvil para estudiantes</h1>
+        <p class="subtitle">Tablero vivo para convertir el alcance acordado en una experiencia móvil útil: test vocacional, comunidad, oferta académica y la base del estudiante.</p>
+        <div class="status-row">
+          <span class="pill">4 capas de trabajo</span>
+          <span class="pill">Foco: Android primero</span>
+          <span class="pill">Estado: planificación</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section aria-labelledby="equipo-title">
+        <div class="section-label">
+          <h2 id="equipo-title">Equipo y capas</h2>
+          <p>Cada capa tiene una persona responsable y límites claros.</p>
+        </div>
+        <div class="team">
+          <article class="card">
+            <span class="number">CAPA 01</span>
+            <h3>Oferta académica</h3>
+            <p class="owner">Responsable: Edward</p>
+            <ul><li>Catálogo SNIES</li><li>Búsqueda y filtros</li><li>Detalle y favoritos</li><li>Conexión con recomendaciones</li></ul>
+          </article>
+          <article class="card">
+            <span class="number">CAPA 02</span>
+            <h3>Comunidad</h3>
+            <p class="owner">Responsable: Julián</p>
+            <ul><li>Feed y detalle</li><li>Publicar y comentar</li><li>Votos o me gusta</li><li>Reportar contenido</li></ul>
+          </article>
+          <article class="card">
+            <span class="number">CAPA 03</span>
+            <h3>Test vocacional</h3>
+            <p class="owner">Responsable: Brayan</p>
+            <ul><li>Cuestionario y borrador</li><li>Resultado desde backend</li><li>Historial</li><li>Recomendaciones de oferta</li></ul>
+          </article>
+          <article class="card">
+            <span class="number">CAPA 04</span>
+            <h3>Base del estudiante</h3>
+            <p class="owner">Responsable: David</p>
+            <ul><li>Sesión y navegación</li><li>Perfil y dashboard</li><li>Racha y Broti</li><li>Notificaciones internas</li></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="task-board" aria-labelledby="tareas-title">
+        <div class="tasks">
+          <h2 id="tareas-title">Próximas tareas</h2>
+          <p>Este espacio se llenará durante la planificación. Cada tarea debe tener responsable, criterio de terminado y estado.</p>
+          <div class="task-list">
+            <div class="task"><span class="check"></span>Definir tareas, dependencias y entregables por capa</div>
+            <div class="task"><span class="check"></span>Acordar contratos de API entre las cuatro capas</div>
+            <div class="task"><span class="check"></span>Definir el flujo completo del estudiante para la primera versión</div>
+          </div>
+        </div>
+        <aside class="guide">
+          <h2>Acuerdo de equipo</h2>
+          <p>Antes de iniciar una tarea, revisa que no invada otra capa.</p>
+          <ol>
+            <li>Registrar la tarea aquí.</li>
+            <li>Indicar dependencia y responsable.</li>
+            <li>Compartir avances y bloqueos.</li>
+            <li>Validar en Android antes de cerrar.</li>
+          </ol>
+        </aside>
+      </section>
+    </main>
+
+    <footer>Brota móvil · tablero temporal de planificación</footer>
+  </body>
+</html>
